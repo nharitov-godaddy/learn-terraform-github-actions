@@ -2,16 +2,16 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.26.0"
+      version = "4.52.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.0.1"
+      version = "3.4.3"
     }
   }
-  required_version = "~> 1.0"
+  required_version = ">= 1.1.0"
 
-  backend "remote" {
+  cloud {
     organization = "nh-terraform-test"
 
     workspaces {
@@ -20,12 +20,9 @@ terraform {
   }
 }
 
-
 provider "aws" {
   region = "us-east-1"
 }
-
-
 
 resource "random_pet" "sg" {}
 
